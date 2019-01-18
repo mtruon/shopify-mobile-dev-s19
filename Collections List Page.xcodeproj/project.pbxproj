@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		4CCE364721F1683700F8D99B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE364621F1683700F8D99B /* AppDelegate.swift */; };
-		4CCE364921F1683700F8D99B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE364821F1683700F8D99B /* ViewController.swift */; };
+		4CCE364921F1683700F8D99B /* CollectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE364821F1683700F8D99B /* CollectionTableViewController.swift */; };
 		4CCE364C21F1683700F8D99B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE364A21F1683700F8D99B /* Main.storyboard */; };
 		4CCE364E21F1683800F8D99B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE364D21F1683800F8D99B /* Assets.xcassets */; };
 		4CCE365121F1683800F8D99B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE364F21F1683800F8D99B /* LaunchScreen.storyboard */; };
 		4CCE365B21F16EDD00F8D99B /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE365A21F16EDD00F8D99B /* Collection.swift */; };
+		4CCE365F21F2678E00F8D99B /* CollectionDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE365E21F2678E00F8D99B /* CollectionDetailsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4CCE364321F1683700F8D99B /* Collections List Page.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Collections List Page.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CCE364621F1683700F8D99B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4CCE364821F1683700F8D99B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4CCE364821F1683700F8D99B /* CollectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewController.swift; sourceTree = "<group>"; };
 		4CCE364B21F1683700F8D99B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CCE364D21F1683800F8D99B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CCE365021F1683800F8D99B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CCE365221F1683800F8D99B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CCE365A21F16EDD00F8D99B /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		4CCE365E21F2678E00F8D99B /* CollectionDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionDetailsTableViewController.swift; path = ../CollectionDetailsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +58,10 @@
 		4CCE364521F1683700F8D99B /* Collections List Page */ = {
 			isa = PBXGroup;
 			children = (
+				4CCE365E21F2678E00F8D99B /* CollectionDetailsTableViewController.swift */,
 				4CCE365A21F16EDD00F8D99B /* Collection.swift */,
 				4CCE364621F1683700F8D99B /* AppDelegate.swift */,
-				4CCE364821F1683700F8D99B /* ViewController.swift */,
+				4CCE364821F1683700F8D99B /* CollectionTableViewController.swift */,
 				4CCE364A21F1683700F8D99B /* Main.storyboard */,
 				4CCE364D21F1683800F8D99B /* Assets.xcassets */,
 				4CCE364F21F1683800F8D99B /* LaunchScreen.storyboard */,
@@ -139,7 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CCE365B21F16EDD00F8D99B /* Collection.swift in Sources */,
-				4CCE364921F1683700F8D99B /* ViewController.swift in Sources */,
+				4CCE364921F1683700F8D99B /* CollectionTableViewController.swift in Sources */,
+				4CCE365F21F2678E00F8D99B /* CollectionDetailsTableViewController.swift in Sources */,
 				4CCE364721F1683700F8D99B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
