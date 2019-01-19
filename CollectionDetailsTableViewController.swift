@@ -50,7 +50,6 @@ class CollectionDetailsTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return products.count

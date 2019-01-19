@@ -13,7 +13,6 @@ class CollectionTableViewController: UITableViewController {
     @IBOutlet weak var collectionTableView: UITableView!
     var collectionKey: String?
     var collections: [Collection] = []
-//    var selectedCollection: Collection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +27,6 @@ class CollectionTableViewController: UITableViewController {
         }
         navigationItem.title = "Collections"
         navigationController?.navigationBar.prefersLargeTitles = true
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
     }
 
@@ -48,12 +46,6 @@ class CollectionTableViewController: UITableViewController {
         return cell
     }
     
-    // MARK: Table View Protocol
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        selectedCollection = collections[indexPath.row]
-//        performSegue(withIdentifier: "CollectionDetailsSegue", sender: nil)
-    }
-    
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CollectionDetailsSegue" {
@@ -67,7 +59,6 @@ class CollectionTableViewController: UITableViewController {
     }
     
     // MARK: API Call
-    
     private func fetchCollectionData(completion: @escaping ([String:[Collection]]?) -> Void) {
         guard let url = URL(string: "https://shopicruit.myshopify.com/admin/custom_collections.json?page=1&access_token=c32313df0d0ef512ca64d5b336a0d7c6") else { return }
         
