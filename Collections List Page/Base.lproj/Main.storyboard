@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,6 +46,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="ox2-PP-41K"/>
+                    <connections>
+                        <outlet property="collectionTableView" destination="8rG-Gn-sdI" id="66H-IE-HUw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s45-Z5-Bb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,6 +70,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="aHH-4o-PpX" kind="show" id="f8j-4A-fuK"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -77,6 +84,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4d-OV-HSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1921" y="735"/>
+        </scene>
+        <!--Product Detail View Controller-->
+        <scene sceneID="DzK-6o-fld">
+            <objects>
+                <viewController id="aHH-4o-PpX" customClass="ProductDetailViewController" customModule="Collections_List_Page" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QLs-h3-hzV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="eve-GU-EQG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jvL-gS-wZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2762" y="734"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Mr-9V-JlZ">

@@ -10,8 +10,10 @@ import UIKit
 
 class CollectionTableViewController: UITableViewController {
 
+    @IBOutlet weak var collectionTableView: UITableView!
     var collectionKey: String?
     var collections: [Collection] = []
+//    var selectedCollection: Collection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,14 +50,19 @@ class CollectionTableViewController: UITableViewController {
     
     // MARK: Table View Protocol
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(collections[indexPath.row].title)
+//        selectedCollection = collections[indexPath.row]
+//        performSegue(withIdentifier: "CollectionDetailsSegue", sender: nil)
     }
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CollectionDetailsSegue" {
-            let collectionDetailsTableViewController = segue.destination as! CollectionDetailsTableViewController
-            collectionDetailsTableViewController.navigationItem.title = "Test"
+            if let indexPath = self.collectionTableView.indexPathForSelectedRow {
+                let collectionDetailsTableViewController = segue.destination as! CollectionDetailsTableViewController
+                let selectedCollection = collections[indexPath.row]
+                collectionDetailsTableViewController.collection = selectedCollection
+            }
+            
         }
     }
     
