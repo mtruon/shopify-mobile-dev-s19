@@ -27,6 +27,8 @@ class CollectionTableViewController: UITableViewController {
         }
         navigationItem.title = "Collections"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
     }
 
@@ -76,5 +78,11 @@ class CollectionTableViewController: UITableViewController {
         task.resume()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CollectionDetailsSegue" {
+            navigationController?.navigationBar.prefersLargeTitles = false
+        }
+    }
+    
 }
 

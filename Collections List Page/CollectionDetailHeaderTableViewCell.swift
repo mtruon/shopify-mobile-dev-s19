@@ -1,5 +1,5 @@
 //
-//  CollectionDetailTableViewCell.swift
+//  CollectionDetailHeaderTableViewCell.swift
 //  Collections List Page
 //
 //  Created by MICHAEL on 2019-01-19.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-class CollectionDetailTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var collectionImageView: UIImageView!
-    @IBOutlet weak var productTitleLabel: UILabel!
+class CollectionDetailHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionTitleLabel: UILabel!
-    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var collectionImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,21 +24,13 @@ class CollectionDetailTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func update(_ image: UIImage, _ productTitle: String, collectionTitle: String, quantity: Int) {
+    func update(_ image: UIImage, _ collectionTitle: String, _ description: String) {
         collectionImageView.image = image
         collectionImageView.layer.borderWidth = 1
         collectionImageView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
         collectionImageView.layer.cornerRadius = 5
         
-        productTitleLabel.text = productTitle
         collectionTitleLabel.text = collectionTitle
-        quantityLabel.text = "\(quantity)"
-        
-        if quantity < 100 {
-            quantityLabel.textColor = UIColor.orange
-        } else if quantity < 50 {
-            quantityLabel.textColor = UIColor.red
-        }
+        descriptionLabel.text = description
     }
-
 }

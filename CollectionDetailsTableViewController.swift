@@ -18,9 +18,7 @@ class CollectionDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupNavigationBarItems()
-        
+        collectionImage = getCollectionImage()
         
         fetchProductData {
             (fetchedInfo) in
@@ -42,11 +40,10 @@ class CollectionDetailsTableViewController: UITableViewController {
         }
     }
     
-    private func setupNavigationBarItems() {
-        navigationItem.title = collection.title
+    private func getCollectionImage() -> UIImage? {
         let imageURL = URL(string: collection.image.src)
-        guard let imageData = try? Data(contentsOf: imageURL!) else { return }
-        collectionImage = UIImage(data: imageData)
+        guard let imageData = try? Data(contentsOf: imageURL!) else { return nil }
+        return UIImage(data: imageData)
     }
     
     // MARK: - Table view data source
@@ -59,15 +56,23 @@ class CollectionDetailsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionDetailCell", for: indexPath) as! CollectionDetailTableViewCell
-        let product = products[indexPath.row]
-        if let productDetail = productDetailsDictionary[product.productId], collectionImage != nil {
-            cell.update(collectionImage!, productDetail.title, collectionTitle: collection.title, quantity: getProductTotalQuantity(from: productDetail))
-        } else {
-            cell.textLabel?.text = "\(product.id)"
-        }
         
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionDetailHeaderCell", for: indexPath) as! CollectionDetailHeaderTableViewCell
+            cell.update(collectionImage!, collection.title, collection.bodyHtml)
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionDetailCell", for: indexPath) as! CollectionDetailTableViewCell
+            let product = products[indexPath.row]
+            if let productDetail = productDetailsDictionary[product.productId], collectionImage != nil {
+                cell.update(collectionImage!, productDetail.title, collectionTitle: collection.title, quantity: getProductTotalQuantity(from: productDetail))
+            } else {
+                cell.textLabel?.text = "\(product.id)"
+            }
+            
+            return cell
+        }
     }
     
     private func getProductTotalQuantity(from productDetail: ProductDetail) -> Int {
@@ -123,4 +128,5 @@ class CollectionDetailsTableViewController: UITableViewController {
         productIdString.removeLast()
         return productIdString
     }
+    
 }
