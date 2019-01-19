@@ -31,7 +31,7 @@ class CollectionDetailsTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.fetchProductDetailData() {
                     (fetchedInfo) in
-                    // tb implement type safety
+                    // Implement type safety
                     let productDetailsKey = fetchedInfo?.first?.key
                     for productDetail in ((fetchedInfo?[productDetailsKey!]!)!) {
                         self.productDetailsDictionary[productDetail.id] = productDetail
@@ -40,16 +40,9 @@ class CollectionDetailsTableViewController: UITableViewController {
                 }
             }
         }
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func setupNavigationBarItems() {
+    private func setupNavigationBarItems() {
         navigationItem.title = collection.title
         let imageURL = URL(string: collection.image.src)
         guard let imageData = try? Data(contentsOf: imageURL!) else { return }
@@ -70,14 +63,22 @@ class CollectionDetailsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionDetailCell", for: indexPath) as! CollectionDetailTableViewCell
         let product = products[indexPath.row]
         if let productDetail = productDetailsDictionary[product.productId], collectionImage != nil {
-            cell.update(collectionImage!, productDetail.title, collectionTitle: collection.title, quantity: 123)
+            cell.update(collectionImage!, productDetail.title, collectionTitle: collection.title, quantity: getProductTotalQuantity(from: productDetail))
         } else {
             cell.textLabel?.text = "\(product.id)"
         }
         
         return cell
     }
-
+    
+    private func getProductTotalQuantity(from productDetail: ProductDetail) -> Int {
+        var totalQuantity = 0
+        for variant in productDetail.variants {
+            totalQuantity += variant.inventoryQuantity
+        }
+        return totalQuantity
+    }
+    
     // MARK: API
     private func fetchProductData(completion: @escaping ([String:[Product]]?) -> Void) {
         guard let url = URL(string: "https://shopicruit.myshopify.com/admin/collects.json?collection_id=\(collection.id)&page=1&access_token=c32313df0d0ef512ca64d5b336a0d7c6") else { return }
@@ -123,60 +124,4 @@ class CollectionDetailsTableViewController: UITableViewController {
         productIdString.removeLast()
         return productIdString
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

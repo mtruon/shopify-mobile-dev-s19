@@ -30,6 +30,12 @@ class CollectionDetailTableViewCell: UITableViewCell {
         productTitleLabel.text = productTitle
         collectionTitleLabel.text = collectionTitle
         quantityLabel.text = "\(quantity)"
+        
+        if quantity < 100 {
+            quantityLabel.textColor = UIColor.orange
+        } else if quantity < 50 {
+            quantityLabel.textColor = UIColor.red
+        }
     }
 
 }

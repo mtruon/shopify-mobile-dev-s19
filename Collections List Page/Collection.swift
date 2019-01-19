@@ -82,17 +82,17 @@ struct Variant: Decodable {
     var option1: String?
     var option2: String?
     var option3: String?
-    var createdAt: String      //Date
-    var updatedAt: String      //Date
+    var createdAt: String
+    var updatedAt: String
     var taxable: Bool
     var barcode: String?
     var grams: Int
     var imageId: Int?
     var weight: Double?
     var weightUnit: String
-    var inventoryItemId: Int?
-    var inventoryQuantity: Int?
-    var oldInventoryQuantity: Int?
+    var inventoryItemId: Int
+    var inventoryQuantity: Int
+    var oldInventoryQuantity: Int
     var requiresShipping: Bool
     var adminGraphqlApiId: String
 }
