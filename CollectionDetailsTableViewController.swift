@@ -14,11 +14,13 @@ class CollectionDetailsTableViewController: UITableViewController {
     var productKey: String?
     var products: [Product] = []
     var productDetailsDictionary: [Int:ProductDetail] = [:]
+    var collectionImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = collection.title
+        setupNavigationBarItems()
+        
         
         fetchProductData {
             (fetchedInfo) in
@@ -29,10 +31,10 @@ class CollectionDetailsTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.fetchProductDetailData() {
                     (fetchedInfo) in
-                    var productDetailDictionary: [Int:ProductDetail] = [:]
+                    // tb implement type safety
                     let productDetailsKey = fetchedInfo?.first?.key
                     for productDetail in ((fetchedInfo?[productDetailsKey!]!)!) {
-                        productDetailDictionary[productDetail.id] = productDetail
+                        self.productDetailsDictionary[productDetail.id] = productDetail
                     }
                     DispatchQueue.main.async { self.tableView.reloadData() }
                 }
@@ -47,11 +49,13 @@ class CollectionDetailsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-//        navigationItem.title = collection.title
+    func setupNavigationBarItems() {
+        navigationItem.title = collection.title
+        let imageURL = URL(string: collection.image.src)
+        guard let imageData = try? Data(contentsOf: imageURL!) else { return }
+        collectionImage = UIImage(data: imageData)
     }
-
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,10 +67,10 @@ class CollectionDetailsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionDetailCell", for: indexPath) as! CollectionDetailTableViewCell
         let product = products[indexPath.row]
-        if let productDetail = productDetailsDictionary[product.id] {
-            cell.textLabel?.text = "\(productDetail.title)"
+        if let productDetail = productDetailsDictionary[product.productId], collectionImage != nil {
+            cell.update(collectionImage!, productDetail.title, collectionTitle: collection.title, quantity: 123)
         } else {
             cell.textLabel?.text = "\(product.id)"
         }
@@ -113,7 +117,7 @@ class CollectionDetailsTableViewController: UITableViewController {
     private func getProductIdString() -> String {
         var productIdString = ""
         for product in self.products {
-            productIdString.append("\(product.id),")
+            productIdString.append("\(product.productId),")
         }
 
         productIdString.removeLast()

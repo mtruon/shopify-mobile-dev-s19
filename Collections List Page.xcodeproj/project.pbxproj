@@ -15,6 +15,7 @@
 		4CCE365B21F16EDD00F8D99B /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE365A21F16EDD00F8D99B /* Collection.swift */; };
 		4CCE365F21F2678E00F8D99B /* CollectionDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE365E21F2678E00F8D99B /* CollectionDetailsTableViewController.swift */; };
 		4CCE366121F29DF900F8D99B /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE366021F29DF900F8D99B /* ProductDetailViewController.swift */; };
+		4CCE366321F3999D00F8D99B /* CollectionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE366221F3999D00F8D99B /* CollectionDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4CCE365A21F16EDD00F8D99B /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		4CCE365E21F2678E00F8D99B /* CollectionDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionDetailsTableViewController.swift; path = ../CollectionDetailsTableViewController.swift; sourceTree = "<group>"; };
 		4CCE366021F29DF900F8D99B /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		4CCE366221F3999D00F8D99B /* CollectionDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				4CCE364621F1683700F8D99B /* AppDelegate.swift */,
 				4CCE364821F1683700F8D99B /* CollectionTableViewController.swift */,
 				4CCE364A21F1683700F8D99B /* Main.storyboard */,
+				4CCE366221F3999D00F8D99B /* CollectionDetailTableViewCell.swift */,
 				4CCE366021F29DF900F8D99B /* ProductDetailViewController.swift */,
 				4CCE364D21F1683800F8D99B /* Assets.xcassets */,
 				4CCE364F21F1683800F8D99B /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 			files = (
 				4CCE365B21F16EDD00F8D99B /* Collection.swift in Sources */,
 				4CCE364921F1683700F8D99B /* CollectionTableViewController.swift in Sources */,
+				4CCE366321F3999D00F8D99B /* CollectionDetailTableViewCell.swift in Sources */,
 				4CCE366121F29DF900F8D99B /* ProductDetailViewController.swift in Sources */,
 				4CCE365F21F2678E00F8D99B /* CollectionDetailsTableViewController.swift in Sources */,
 				4CCE364721F1683700F8D99B /* AppDelegate.swift in Sources */,

@@ -32,6 +32,8 @@ struct Image: Decodable {
     var width: Int
     var height: Int
     var src: String
+    var variantIds: [String]?
+    var adminGraphqlApiId: String?
 }
 
 struct Product: Decodable {
@@ -61,36 +63,36 @@ struct ProductDetail: Decodable {
     var publishedScope: String
     var adminGraphqlApiId: String
     var variants: [Variant]
-    var options: Option
-    var images: [Image]
+    var options: [Option]
     var image: Image
+    var images: [Image]
 }
 
 struct Variant: Decodable {
     var id: Int
     var productId: Int
     var title: String
-    var price: Double
+    var price: String
     var sku: String?
     var position: Int
     var inventoryPolicy: String
     var compareAtPrice: String?
-    var fulfillmentService: String
+    var fulfillmentService: String?
     var inventoryManagement: String?
-    var option1: String
-    var option2: String
-    var option3: String
-    var createdAt: String
-    var updatedAt: String
+    var option1: String?
+    var option2: String?
+    var option3: String?
+    var createdAt: String      //Date
+    var updatedAt: String      //Date
     var taxable: Bool
     var barcode: String?
     var grams: Int
     var imageId: Int?
-    var weight: Double
+    var weight: Double?
     var weightUnit: String
-    var inventoryItemId: Int
-    var inventoryQuantity: Int
-    var oldInventoryQuantity: Int
+    var inventoryItemId: Int?
+    var inventoryQuantity: Int?
+    var oldInventoryQuantity: Int?
     var requiresShipping: Bool
     var adminGraphqlApiId: String
 }
@@ -100,5 +102,5 @@ struct Option: Decodable {
     var productId: Int
     var name: String
     var position: Int
-    var values: [Int:String]
+    var values: [String]
 }
