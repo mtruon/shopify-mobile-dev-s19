@@ -47,7 +47,13 @@ class CollectionDetailsTableViewController: UITableViewController {
         return UIImage(data: imageData)
     }
     
-    // MARK: - Table view data source
+    private func getProductImage(from productDetail: ProductDetail) -> UIImage? {
+        let imageURL = URL(string: productDetail.image.src)
+        guard let imageData = try? Data(contentsOf: imageURL!) else { return UIImage() }
+        return UIImage(data: imageData)
+    }
+    
+    // MARK: - Table View
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return products.count
@@ -67,7 +73,7 @@ class CollectionDetailsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionDetailCell", for: indexPath) as! CollectionDetailTableViewCell
             let product = products[indexPath.row]
             if let productDetail = productDetailsDictionary[product.productId], collectionImage != nil {
-                cell.update(collectionImage!, productDetail.title, collectionTitle: collection.title, quantity: getProductTotalQuantity(from: productDetail))
+                cell.update(getProductImage(from: productDetail)!, productDetail.title, collectionTitle: collection.title, quantity: getProductTotalQuantity(from: productDetail))
             } else {
                 cell.textLabel?.text = "\(product.id)"
             }
@@ -82,6 +88,13 @@ class CollectionDetailsTableViewController: UITableViewController {
             totalQuantity += variant.inventoryQuantity
         }
         return totalQuantity
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedProduct = products[indexPath.row]
+        let selectedProductDetails = productDetailsDictionary[products[indexPath.row].productId]
+        print(selectedProduct)
+        print(selectedProductDetails!.image.src)
     }
     
     // MARK: API

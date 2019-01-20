@@ -9,6 +9,7 @@
 import UIKit
 
 class CollectionDetailHeaderTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var collectionTitleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var collectionImageView: UIImageView!
