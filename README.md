@@ -4,7 +4,10 @@ Doc: https://docs.google.com/document/d/1h3TFW9HhFxBVrmgd33dNrUiJx31NQFn6dpZHrbr
 
 This is my submission for Shopify's mobile developer internship challenge for the summer 2019 term.
 
-<img src="collection.png" width="45%"> <img src="collection-detail.png" width="45%">
+<p align="center">
+  <img src="collection.png" width="35%"> <img src="collection-detail.png" width="35%">
+  <img src="collection-se.png" width="35%"> <img src="collection-detail-se.png" width="35%">
+</p>
 
 ## Deviations and Limitations from Spec
 There were a few questions that I had regarding the challenge specification where I felt it was better to deviate. In a practical environment, I would address these to my product owner/manager regarding design decisions. This section explains my reasoning.
