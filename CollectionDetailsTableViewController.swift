@@ -18,6 +18,7 @@ class CollectionDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = false
         collectionImage = getCollectionImage()
         
         fetchProductData {

@@ -77,12 +77,5 @@ class CollectionTableViewController: UITableViewController {
         }
         task.resume()
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CollectionDetailsSegue" {
-            navigationController?.navigationBar.prefersLargeTitles = false
-        }
-    }
-    
 }
 
