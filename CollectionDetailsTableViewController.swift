@@ -90,13 +90,6 @@ class CollectionDetailsTableViewController: UITableViewController {
         return totalQuantity
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedProduct = products[indexPath.row]
-        let selectedProductDetails = productDetailsDictionary[products[indexPath.row].productId]
-        print(selectedProduct)
-        print(selectedProductDetails!.image.src)
-    }
-    
     // MARK: API
     private func fetchProductData(completion: @escaping ([String:[Product]]?) -> Void) {
         guard let url = URL(string: "https://shopicruit.myshopify.com/admin/collects.json?collection_id=\(collection.id)&page=1&access_token=c32313df0d0ef512ca64d5b336a0d7c6") else { return }
